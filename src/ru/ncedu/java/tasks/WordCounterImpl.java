@@ -5,9 +5,13 @@ import java.util.Map;
 
 /**
  * Created by Sir Nightmare on 08/01/16.
+ * Class for word counting
  */
 public class WordCounterImpl implements WordCounter
 {
+    private String text;
+
+
     /**
      * Принимает текст для анализа
      *
