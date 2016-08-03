@@ -1,9 +1,6 @@
 package ru.ncedu.java.tasks;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Sir Nightmare on 08/01/16.
@@ -85,7 +82,12 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public List<Map.Entry<String, Long>> getWordCountsSorted() throws IllegalStateException {
-        return null;
+        if (this.text != null) {
+        return sortWordCounts(numberOfWords);
+
+        }else {
+            throw new IllegalStateException();
+        }
     }
 
     /**
@@ -102,7 +104,22 @@ public class WordCounterImpl implements WordCounter {
         if (orig == null) {
             return null;
         } else {
-            return null;
+            List<Map.Entry<String, Long>> list =
+                    new LinkedList<>( orig.entrySet() );
+            Collections.sort( list, new Comparator<Map.Entry<String, Long>>()
+            {
+                @Override
+                public int compare( Map.Entry<String, Long> o1, Map.Entry<String, Long> o2 )
+                {
+                    if((o1.getValue()).compareTo(o2.getValue())!=0) {
+                        return -1 * (o1.getValue()).compareTo(o2.getValue());
+                    }
+                    else {
+                        return (o1.getKey()).compareTo(o2.getKey());
+                    }
+                }
+            } );
+            return list;
         }
     }
 }

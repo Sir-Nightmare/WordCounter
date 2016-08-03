@@ -1,6 +1,7 @@
 package ru.ncedu.java.tasks;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by Sir Nightmare on 08/03/16.
@@ -38,10 +39,9 @@ public class Main {
         lol.setText(poem);
         lol.getWordCounts();
 
-//        for (Map.Entry entry : numberOfWords.entrySet()) {
-//            System.out.println("Key: " + entry.getKey() + " Value: "
-//                    + entry.getValue());
-//        }
+        for (Map.Entry<String, Long> i:lol.getWordCountsSorted()){
+            System.out.println(i);
+        }
 
     }
 }
