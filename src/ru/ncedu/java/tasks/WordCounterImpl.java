@@ -48,13 +48,16 @@ public class WordCounterImpl implements WordCounter {
     @Override
     public Map<String, Long> getWordCounts() throws IllegalStateException {
         if (this.text != null) {
-            String text = this.text.replaceAll("[\\|#.,/:;-?\\—'!\"\\№\\;\\%\\?\\@\\$\\^\\*\\&\\(\\)\\_\\+-\\\\]?", "");
-            text = text.replaceAll("\\\n", " ");
+            String text = this.text;
+            text = text.replaceAll("<.*>", " ");
+            //text = text.replaceAll("[|#.,/:;?—'!\"№%@$~`><^*&(){}\\[\\]_+]?", "");
+            text = text.replaceAll("\\n", " ");
+            text = text.replaceAll("[\\s]{2,}", " ");
             text = text.toLowerCase();
             String[] wordArray = text.split(" ");
-
             for (String word : wordArray) {
                 if (word != null) {
+                    word = word.trim();
                     if (numberOfWords.containsKey(word)) {
                         numberOfWords.put(word, numberOfWords.get(word) + 1);
                     } else {
@@ -83,9 +86,9 @@ public class WordCounterImpl implements WordCounter {
     @Override
     public List<Map.Entry<String, Long>> getWordCountsSorted() throws IllegalStateException {
         if (this.text != null) {
-        return sortWordCounts(numberOfWords);
+            return sortWordCounts(numberOfWords);
 
-        }else {
+        } else {
             throw new IllegalStateException();
         }
     }
@@ -105,20 +108,17 @@ public class WordCounterImpl implements WordCounter {
             return null;
         } else {
             List<Map.Entry<String, Long>> list =
-                    new LinkedList<>( orig.entrySet() );
-            Collections.sort( list, new Comparator<Map.Entry<String, Long>>()
-            {
+                    new LinkedList<>(orig.entrySet());
+            Collections.sort(list, new Comparator<Map.Entry<String, Long>>() {
                 @Override
-                public int compare( Map.Entry<String, Long> o1, Map.Entry<String, Long> o2 )
-                {
-                    if((o1.getValue()).compareTo(o2.getValue())!=0) {
+                public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
+                    if ((o1.getValue()).compareTo(o2.getValue()) != 0) {
                         return -1 * (o1.getValue()).compareTo(o2.getValue());
-                    }
-                    else {
+                    } else {
                         return (o1.getKey()).compareTo(o2.getKey());
                     }
                 }
-            } );
+            });
             return list;
         }
     }
