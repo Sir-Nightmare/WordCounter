@@ -1,5 +1,7 @@
 package ru.ncedu.java.tasks;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,11 +9,12 @@ import java.util.Map;
  * Created by Sir Nightmare on 08/01/16.
  * Class for word counting
  */
-public class WordCounterImpl implements WordCounter
-{
+public class WordCounterImpl implements WordCounter {
     private String text;
-    Map<String, Long> numberOfWords;
+    private Map<String, Long> numberOfWords = new HashMap<String, Long>();
 
+    public WordCounterImpl() {
+    }
 
     /**
      * Принимает текст для анализа
@@ -20,7 +23,7 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public void setText(String text) {
-        this.text=text;
+        this.text = text;
     }
 
     /**
@@ -47,7 +50,25 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public Map<String, Long> getWordCounts() throws IllegalStateException {
-        return null;
+        if (this.text != null) {
+            String text = this.text.replaceAll("[\\|#.,/:;-?\\—'!\"\\№\\;\\%\\?\\@\\$\\^\\*\\&\\(\\)\\_\\+-\\\\]?", "");
+            text = text.replaceAll("\\\n", " ");
+            text = text.toLowerCase();
+            String[] wordArray = text.split(" ");
+
+            for (String word : wordArray) {
+                if (word != null) {
+                    if (numberOfWords.containsKey(word)) {
+                        numberOfWords.put(word, numberOfWords.get(word) + 1);
+                    } else {
+                        numberOfWords.put(word, 1L);
+                    }
+                }
+            }
+            return numberOfWords;
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     /**
@@ -78,11 +99,10 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public List<Map.Entry<String, Long>> sortWordCounts(Map<String, Long> orig) {
-        if(orig==null) {
+        if (orig == null) {
             return null;
-        }
-        else {
-        return null;
+        } else {
+            return null;
         }
     }
 }
