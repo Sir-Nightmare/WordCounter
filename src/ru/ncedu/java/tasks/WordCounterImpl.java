@@ -10,6 +10,7 @@ import java.util.Map;
 public class WordCounterImpl implements WordCounter
 {
     private String text;
+    Map<String, Long> numberOfWords;
 
 
     /**
@@ -19,7 +20,7 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public void setText(String text) {
-
+        this.text=text;
     }
 
     /**
@@ -30,7 +31,8 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public String getText() {
-        return null;
+
+        return text;
     }
 
     /**
@@ -76,6 +78,11 @@ public class WordCounterImpl implements WordCounter
      */
     @Override
     public List<Map.Entry<String, Long>> sortWordCounts(Map<String, Long> orig) {
+        if(orig==null) {
+            return null;
+        }
+        else {
         return null;
+        }
     }
 }
