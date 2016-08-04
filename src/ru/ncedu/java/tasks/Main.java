@@ -176,17 +176,29 @@ public class Main {
                 "apply, that proxy's public statement of acceptance of any version is\n" +
                 "permanent authorization for you to choose that version for the\n" +
                 "Library.";
-        poem="Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, " +
-                "vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim " +
-                "qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam " +
-                "liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat " +
-                "facer possim assum.\n" +
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut " +
-                "laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation " +
-                "ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor " +
-                "in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis " +
-                "at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis " +
-                "dolore te feugait nulla facilisi.";
+//        poem="Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, " +
+//                "vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim " +
+//                "qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam " +
+//                "liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat " +
+//                "facer possim assum.\n" +
+//                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut " +
+//                "laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation " +
+//                "ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor " +
+//                "in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis " +
+//                "at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis " +
+//                "dolore te feugait nulla facilisi.";
+//        poem="M1 Abrams – один из самых тяжёлых танков и, следовательно, наземных транспортных средств. " +
+//                "Современные модели перешагивают отметку в 70 тонн. Машина приводится в движение газовой турбиной " +
+//                "мощностью 1500 л.с. и имеет броню из обеднённого урана с лицевыми пластинами, разрушающими " +
+//                "вызванные боеголовками или минами плазменные пучки. Применённый в M1 старый уран из атомных станций – " +
+//                "это ещё один метод утилизации отходов помимо самого моста. Последний выполнен из высокопрочного " +
+//                "термопластика, на 100% состоящего из переработанных пластиковых бутылок и подобных предметов. " +
+//                "Конструкция устойчива к коррозии, поэтому практически не требует обслуживания в отличие от стальных " +
+//                "вариантов, которые нуждаются в регулярном восстановлении и инспекции. В итоге новые мосты могут " +
+//                "сократить затраты в 34 раза. Разработкой занималась компания Axion International совместно с учёными " +
+//                "из университета штата Нью-Джерси (Rutgers University). Они видят множество сфер применения пластика в " +
+//                "последующие годы, который заменит \"материалы последнего поколения, такие как дерево, сталь или бетон\".";
+
         WordCounter lol = new WordCounterImpl();
         lol.setText(poem);
         Map<String, Long> numberOfWords = lol.getWordCounts();
@@ -198,6 +210,13 @@ public class Main {
         for (Map.Entry<String, Long> i:lol.getWordCountsSorted()){
             System.out.println(i);
         }
+
+
+
+
+//
+//        String str = "qaEWwerwRE < > QWREWQER   WRE";
+//        System.out.println(str.replaceAll("<[\\s]*[\\S]*[\\s]*>", " "));
 
     }
 }

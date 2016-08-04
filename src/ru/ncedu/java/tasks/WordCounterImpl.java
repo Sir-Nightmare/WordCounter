@@ -49,10 +49,10 @@ public class WordCounterImpl implements WordCounter {
     public Map<String, Long> getWordCounts() throws IllegalStateException {
         if (this.text != null) {
             String text = this.text;
-            text = text.replaceAll("<.*>", " ");
             //text = text.replaceAll("[|#.,/:;?—'!\"№%@$~`><^*&(){}\\[\\]_+]?", "");
-            text = text.replaceAll("\\n", " ");
-            text = text.replaceAll("[\\s]{2,}", " ");
+            text = text.replaceAll("<[\\s]*[\\S]*[\\s]*>", " ");
+            text = text.replaceAll("\\{}", "");
+            text = text.replaceAll("[\\s]+", " ");
             text = text.toLowerCase();
             String[] wordArray = text.split(" ");
             for (String word : wordArray) {
